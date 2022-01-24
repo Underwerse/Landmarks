@@ -10,8 +10,7 @@
     "build": "next build",
     "start": "next start",
     "server": "node src/dis/dis-udpserver.js",
-    "client": "node src/dis/dis-udpclient.js",
-    "prepublish": "uglifyjs src/dis/dis/*.js src/dis/disSupporting/*.js -o dis6.min.js && uglifyjs src/dis/dis7/*.js src/dis/disSupporting/*.js -o dis7.min.js"
+    "client": "node src/dis/dis-udpclient.js"
   },
   "dependencies": {
     "mongodb": "^3.5.9",
