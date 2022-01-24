@@ -7,6 +7,7 @@ import {
   getLandmarkBeforeDate,
   getLandmarkAfterDate,
   postLandmarkUpdateOne,
+  postDis,
 } from '../libs/landmarksDataProcessing.js';
 import {
   filterLandmarksInBody,
@@ -15,6 +16,7 @@ import {
   isBodyValid,
 } from '../libs/requestProcessing.js';
 import Landmark from '../models/Landmark.js';
+import DisMessage from '../models/DisMessage.js';
 
 let lm, lmAdditional;
 
@@ -279,6 +281,54 @@ describe('Test cases for landmarks API', function () {
       let resultPostExisted = await postLandmarkUpdateOne(existedChToPost);
 
       assert.strictEqual(resultPostExisted, 1);
+    });
+  });
+});
+
+describe('Test cases for DIS', function () {
+  describe('Test DIS: POST', () => {
+    let disMsg;
+
+    before((done) => {
+      disMsg = new DisMessage({
+        entityID: {
+          site: 11,
+          application: 22,
+          entity: 33,
+        },
+        marking: 'DIS_marking_before',
+        location: {
+          x: 1,
+          y: 1,
+          z: 1,
+        },
+      });
+
+      disMsg
+        .save()
+        .then(function () {
+          assert(disMsg.isNew === false);
+        })
+        .then(done());
+    });
+
+    it("Given a message from client to POST via server, should return object with 'ok: 1' - field", async () => {
+      const newDisMsgToPost = {
+        entityID: {
+          site: 44,
+          application: 55,
+          entity: 66,
+        },
+        marking: 'DIS_marking_test',
+        location: {
+          x: 2,
+          y: 2,
+          z: 2,
+        },
+      };
+      let result = await postDis(newDisMsgToPost);
+
+      assert.strictEqual(result, 1);
     });
   });
 });

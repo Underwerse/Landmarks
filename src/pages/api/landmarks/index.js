@@ -13,7 +13,7 @@ const {
   getLandmarkAfterDate,
   postLandmarkUpdateOne,
 } = require('../../../libs/landmarksDataProcessing');
-const dbConnect = require('../../../util/mongodb');
+const { dbConnect } = require('../../../util/mongodb');
 
 dbConnect();
 
@@ -115,7 +115,7 @@ const getLandmarks = async (req, res) => {
     }
 
     resultGetLandmarks.length > 0
-      ? res.status(201).json(resultGetLandmarks)
+      ? res.status(201).json({ landmarks: resultGetLandmarks })
       : res.json(msg);
   } catch (error) {
     return res.status(400).json({

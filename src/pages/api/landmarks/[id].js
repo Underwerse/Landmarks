@@ -1,4 +1,4 @@
-const dbConnect = require('../../../util/mongodb');
+const { dbConnect } = require('../../../util/mongodb');
 const { getLandmarkById } = require('../../../libs/landmarksDataProcessing');
 const { checkIsHeaderOk } = require('../../../libs/requestProcessing');
 

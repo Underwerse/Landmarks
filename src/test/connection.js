@@ -20,7 +20,10 @@ before((done) => {
 
 after((done) => {
   mongoose.connection.collections.landmarks.drop(() => {
-    console.log('\n************-Collection was dropped-************');
+    console.log('\n************-LANDMARKS-Collection was dropped-************');
+  });
+  mongoose.connection.collections.dismessages.drop(() => {
+    console.log('\n************-DIS-Collection was dropped-************');
     done();
   });
 });

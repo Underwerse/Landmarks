@@ -1,4 +1,5 @@
 const Landmark = require('../models/Landmark');
+const DisMessage = require('../models/DisMessage');
 
 /**
  *
@@ -70,6 +71,21 @@ const postLandmarkUpdateOne = async (data) => {
   return response.ok;
 };
 
+const postDis = async (data) => {
+  let response;
+  try {
+    response = await DisMessage.updateOne(
+      { entityID: data.entityID },
+      { ...data },
+      { upsert: true }
+    );
+  } catch (error) {
+    console.log(error.message);
+    return 0;
+  }
+  return response.ok;
+};
+
 module.exports = {
   getLandmarkAll,
   getLandmarkById,
@@ -77,4 +93,5 @@ module.exports = {
   getLandmarkBeforeDate,
   getLandmarkAfterDate,
   postLandmarkUpdateOne,
+  postDis,
 };
