@@ -1,20 +1,12 @@
-# Description
+# Landmarks REST API
 
-A simple template application to work with React, Nextjs, Redux and Riteway for testing.
+NodeJS REST API for the commercial purposes with using MongoDB and Mocha-testing.
 
-## Testing
+### Installing app
+`npm i`
 
-Testing files are in the format of ```<filename>.test.it```.
-You need to rename the `.env.local` file to `.env` to be able to run the tests 
+### Running API
+`npm run dev`
 
-### Running the tests
-
-Run the tests once
-``` 
-npm run test 
-```
-
-Run the tests in watch  mode
-```
-npm run watch 
-```
+### Running tests
+`npm run test`
